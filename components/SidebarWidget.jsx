@@ -1,6 +1,6 @@
 const SidebarWidget = () => {
   return (
-    <div>SidebarWidget</div>
+    <article className='bg-gray-100'>SidebarWidget</article>
   )
 }
 export default SidebarWidget

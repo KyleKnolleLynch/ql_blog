@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { PostCard, SidebarWidget, Categories } from '../components'
+import { Layout, PostCard, SidebarWidget, Categories } from '../components'
 
 const posts = [
   { title: 'Post One', snippet: 'This is post number one' },
@@ -8,14 +8,14 @@ const posts = [
 
 const Home = () => {
   return (
-    <div className="mb-8 px-2 pt-5 sm:container sm:mx-auto sm:px-10">
+    <Layout>
       <Head>
         <title>QL Blog</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="grid grid-cols-1 gap-12 lg:grid-cols-12">
-        <section className="col-span-1 lg:col-span-8">
+      <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 text-gray-800">
+        <section className="col-span-1 lg:col-span-8 bg-gray-100">
           {!posts ? (
             <p>Loading...</p>
           ) : (
@@ -28,12 +28,8 @@ const Home = () => {
             <Categories />
           </div>
         </section>
-      </main>
-
-      <footer className="mt-auto flex h-24 items-center justify-center border-t">
-        <p>Footer</p>
-      </footer>
-    </div>
+      </div>
+    </Layout>
   )
 }
 

@@ -1,6 +1,6 @@
 const Categories = () => {
   return (
-    <div>Categories</div>
+    <article className='bg-gray-100'>Categories</article>
   )
 }
 export default Categories
