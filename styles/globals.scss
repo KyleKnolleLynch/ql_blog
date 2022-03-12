@@ -4,9 +4,17 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700&display=swap');
 
+$clr-primary: hsl(266, 80%, 61%);
+$clr-secondary: hsla(273, 60%, 67%, 0.699);
+$clr-gray-100: hsl(220, 14%, 96%);
+$clr-gray-800: hsl(215, 28%, 17%);
+$clr-gray-300: hsl(215, 28%, 17%);
+
 :root {
-  --clr-primary: hsl(240, 80%, 61%);
-  --clr-secondary: hsl(240, 70%, 65%);
+  --clr-primary: #{$clr-primary};
+  --clr-secondary: #{$clr-secondary};
+  --clr-gray-100: #{$clr-gray-100};
+  --clr-gray-800: #{$clr-gray-800};
 }
 
 *,

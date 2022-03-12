@@ -1,6 +1,12 @@
 const Categories = () => {
   return (
-    <article className='bg-gray-100'>Categories</article>
+    <article>Categories
+      <style jsx>{`
+        article {
+          background: var(--clr-gray-100);
+        }
+      `}</style>
+    </article>
   )
 }
 export default Categories

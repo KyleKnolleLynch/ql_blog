@@ -1,6 +1,12 @@
 const SidebarWidget = () => {
   return (
-    <article className='bg-gray-100'>SidebarWidget</article>
+    <article>SidebarWidget
+      <style jsx>{`
+      article {
+        background: var(--clr-gray-100);
+      }
+      `}</style>
+    </article>
   )
 }
 export default SidebarWidget
