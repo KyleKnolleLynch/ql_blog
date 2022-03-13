@@ -22,30 +22,27 @@ const SidebarWidget = ({ categories, slug }) => {
     return () => mounted = false
   }, [slug])
 
-  console.log(relatedPosts)
-
 
   return (
-    <article className='py-4 rounded'>
-      <h2 className='text-center text-xl font-semibold'>{slug ? 'Featured Posts' : 'Related Posts'}</h2>
+    <article className='px-10 py-6 rounded'>
+      <h2 className='text-xl font-semibold mb-8'>{slug ? 'Featured Posts' : 'Related Posts'}</h2>
       {!relatedPosts ? (
-        <small>No relavent posts found.</small>
+        <p><small className='pb-4'>No relavent posts found.</small></p>
       ) : (
-        <nav className='p-3' aria-label={`${slug ? 'Related' : 'Featured'} posts`}>
+        <nav aria-label={`${slug ? 'Related' : 'Featured'} posts`}>
           <ul>
             {relatedPosts.map(post => (
-              <li key={post.title} className='my-5 cursor-pointer'>
-                <Link href={`/posts/${post.slug}`}>
-                  <div className='flex items-center'>
+              <Link href={`/posts/${post.slug}`}>
+                <li key={post.title} className='flex items-center mb-5 cursor-pointer'>
+                  <div className="flex-none w-16">
                     <Image src={post.featuredImage.url} alt={post.title} width='50px' height='50px' className='rounded-full' />
-                    <div className='ml-5'>
-                      <p>{post.title}</p>
-                      <small><time dateTime={new Date(post.createdAt).toISOString()}>{moment(post.createdAt).format('MMM DD, YYYY')}</time></small>
-                    </div>
                   </div>
-                </Link>
-
-              </li>
+                  <div className='ml-5 flex-grow'>
+                    <p>{post.title}</p>
+                    <small><time dateTime={new Date(post.createdAt).toISOString()}>{moment(post.createdAt).format('MMM DD, YYYY')}</time></small>
+                  </div>
+                </li>
+              </Link>
             ))}
           </ul>
         </nav>
