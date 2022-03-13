@@ -4,10 +4,6 @@ import Link from 'next/link'
 
 const PostCard = ({ post }) => {
     const { title, snippet, featuredImage, author, createdAt, slug } = post
-    const formattedDate = new Date(createdAt).toLocaleDateString()
-    const dateTime = new Date(createdAt).toISOString()
-    console.log(author.avatar)
-    
 
     return (
         <article className='shadow-lg rounded-lg p-0 lg:p-8 pb-12 mb-8'>
@@ -26,23 +22,16 @@ const PostCard = ({ post }) => {
                     <p className='md:text-xl'>{snippet}</p>
                 </div>
             </Link>
-            <div className='block lg:flex items-center'>
-                {/* <img
-                    src={author.photo.url}
-                    alt={author.name}
-                    width='30px'
-                    height='30px'
-                    className='rounded-full'
-                /> */}
-
-                <p>
-                    <small className='text-gray-400 md:text-sm px-2 lg:px-0'>
-                        Article by <span className='author font-semibold'>{author.name}</span>
-                        {' '}on <time dateTime={dateTime}>{formattedDate}</time>
-                    </small>
-                </p>
-            </div>
+            <p>
+                <small className='text-gray-400 md:text-sm px-2 lg:px-0'>
+                    Article by <span className='author font-semibold'>{author.name}</span>
+                    {' '}on <time dateTime={new Date(createdAt).toISOString()}>{moment(createdAt).format('MMM DD, YYYY')}</time>
+                </small>
+            </p>
             <style jsx>{`
+                article {
+                    background-color: var(--clr-gray-100);
+                }
                 .author {
                     color: var(--clr-primary);
                 }

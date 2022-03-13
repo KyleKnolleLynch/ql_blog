@@ -11,7 +11,7 @@ const Home = ({ posts }) => {
       </Head>
 
       <div className="home-container grid grid-cols-1 gap-12 lg:grid-cols-12">
-        <section className="posts-container col-span-1 rounded-t-lg lg:col-span-8 lg:rounded-none">
+        <section className="col-span-1 lg:col-span-8">
           {!posts ? (
             <p>Loading...</p>
           ) : (
@@ -21,7 +21,7 @@ const Home = ({ posts }) => {
           )}
         </section>
         <section className="col-span-1 lg:col-span-4">
-          <div className="relative lg:sticky">
+          <div className="relative lg:sticky top-0 grid gap-y-10">
             <SidebarWidget />
             <Categories />
           </div>
@@ -30,10 +30,6 @@ const Home = ({ posts }) => {
       <style jsx>{`
         .home-container {
           color: var(--clr-gray-800);
-        }
-
-        .posts-container {
-          background-color: var(--clr-gray-100);
         }
       `}</style>
     </Layout>
