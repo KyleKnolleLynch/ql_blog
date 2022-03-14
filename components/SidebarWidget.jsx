@@ -32,12 +32,12 @@ const SidebarWidget = ({ categories, slug }) => {
         <nav aria-label={`${slug ? 'Related' : 'Featured'} posts`}>
           <ul>
             {relatedPosts.map(post => (
-              <Link href={`/posts/${post.slug}`}>
+              <Link href={`/posts/${post.slug}`} key={post.slug}>
                 <li key={post.title} className='flex items-center mb-5 cursor-pointer'>
                   <div className="flex-none w-16">
                     <Image src={post.featuredImage.url} alt={post.title} width='50px' height='50px' className='rounded-full' />
                   </div>
-                  <div className='ml-5 flex-grow'>
+                  <div className='ml-2 flex-grow'>
                     <p>{post.title}</p>
                     <small><time dateTime={new Date(post.createdAt).toISOString()}>{moment(post.createdAt).format('MMM DD, YYYY')}</time></small>
                   </div>
