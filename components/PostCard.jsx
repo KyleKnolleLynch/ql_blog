@@ -6,8 +6,8 @@ const PostCard = ({ post }) => {
     const { title, snippet, featuredImage, author, createdAt, slug } = post
 
     return (
-        <article className='shadow-lg rounded-lg p-0 lg:p-8 pb-12 mb-8'>
-            <div className='relative overflow-hidden shadow-md pb-80 mb-6'>
+        <article className='shadow-lg rounded-lg p-0 lg:p-8 pb-11 mb-8'>
+            <figure className='relative overflow-hidden shadow-md pb-80 mb-7'>
                 <Image
                     src={featuredImage.url}
                     alt={title}
@@ -15,15 +15,15 @@ const PostCard = ({ post }) => {
                     objectFit='cover'
                     className='shadow-lg rounded-t-lg lg:rounded-lg'
                 />
-            </div>
+            </figure>
             <Link href={`/posts/${slug}`}>
-                <div className='cursor-pointer px-2 lg:px-0 pb-3 hover:opacity-70 transition-opacity' role="navigation" aria-label={title}>
-                    <h1 className='text-2xl md:text-4xl pb-2'>{title}</h1>
+                <div className='cursor-pointer px-2 lg:px-0 pb-6 hover:opacity-70 transition-opacity' role="navigation" aria-label={title}>
+                    <h1 className='text-2xl md:text-4xl pb-3'>{title}</h1>
                     <p className='md:text-xl'>{snippet}</p>
                 </div>
             </Link>
-            <p>
-                <small className='text-gray-400 md:text-sm px-2 lg:px-0'>
+            <p className='text-gray-400 px-2 lg:px-0'>
+                <small>
                     Article by <span className='author font-semibold'>{author.name}</span>
                     {' '}on <time dateTime={new Date(createdAt).toISOString()}>{moment(createdAt).format('MMM DD, YYYY')}</time>
                 </small>

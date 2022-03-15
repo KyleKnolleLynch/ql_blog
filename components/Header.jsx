@@ -15,11 +15,11 @@ const Header = () => {
 
         return () => mounted = false
     }, [])
-    
+
     return (
         <header className='container mx-auto flex items-center justify-between py-3 px-5 relative z-10 after:border-b after:absolute after:bottom-0 after:left-0 after:right-0'>
             <nav aria-label='Home'>
-                <Link href='/'><a className='text-3xl md:text-4xl'>QL Blog</a></Link>
+                <Link href='/'><a className='text-3xl md:text-4xl font-bold'>QL Blog</a></Link>
             </nav>
             <nav className='hidden md:flex md:justify-evenly flex-wrap gap-x-3' aria-label='Article categories'>
                 {categories?.map(cat => (

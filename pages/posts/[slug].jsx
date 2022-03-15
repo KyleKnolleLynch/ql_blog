@@ -2,11 +2,10 @@ import { getPosts, getPostDetails } from '../../services'
 import { Layout, PostDetails, Categories, Author, SidebarWidget, Comments, CommentsForm } from '../../components'
 
 const FullPost = ({ post }) => {
-    console.log(post)
-    
+
     return (
         <Layout>
-            <div className="home-container grid grid-cols-1 gap-12 lg:grid-cols-12">
+            <div className="posts-container grid grid-cols-1 gap-12 lg:grid-cols-12">
                 <section className='col-span-1 lg:col-span-8'>
                     <PostDetails post={post} />
                     <Author author={post.author} />
@@ -23,6 +22,11 @@ const FullPost = ({ post }) => {
                     </div>
                 </section>
             </div>
+            <style jsx>{`
+        .posts-container {
+          color: var(--clr-gray-800);
+        }
+      `}</style>
         </Layout>
     )
 }
@@ -41,8 +45,7 @@ export async function getStaticPaths() {
     const posts = await getPosts()
 
     return {
-        paths: posts.map(({ node: { slug }}) => ({ params: { slug }})),
+        paths: posts.map(({ node: { slug } }) => ({ params: { slug } })),
         fallback: false
     }
 }
- 
