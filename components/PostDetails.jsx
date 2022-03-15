@@ -50,7 +50,7 @@ const PostDetails = ({ post: { title, featuredImage, author, createdAt, body } }
   }
 
   return (
-    <article className='shadow-lg rounded-lg p-0 lg:p-8 pb-12 mb-8'>
+    <article className='shadow-lg rounded-lg p-0 lg:p-8 pb-12 mb-28'>
       <figure className='relative overflow-hidden shadow-md py-64 mb-4'>
         <Image
           src={featuredImage.url}

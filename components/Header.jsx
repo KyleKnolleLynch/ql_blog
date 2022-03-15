@@ -17,7 +17,7 @@ const Header = () => {
     }, [])
 
     return (
-        <header className='container mx-auto flex items-center justify-between py-3 px-5 relative z-10 after:border-b after:absolute after:bottom-0 after:left-0 after:right-0'>
+        <header className='container mx-auto flex items-center justify-between py-3 px-5 relative z-10 after:border-b after:absolute after:bottom-0 after:inset-x-0'>
             <nav aria-label='Home'>
                 <Link href='/'><a className='text-3xl md:text-4xl font-bold'>QL Blog</a></Link>
             </nav>
