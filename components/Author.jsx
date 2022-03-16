@@ -3,7 +3,7 @@ import Image from "next/image"
 const Author = ({ author: { name, avatar, bio } }) => {
 
   return (
-    <article className='text-center mb-8 p-10 rounded-lg backdrop-blur-sm bg-black/30 text-gray-100 relative'>
+    <article className='text-center mb-8 p-10 rounded-lg bg-black/30 text-gray-100 relative'>
       <figure className='absolute inset-x-0 -top-12'>
         <Image
           src={avatar.url}
