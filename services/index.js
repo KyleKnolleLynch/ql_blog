@@ -2,6 +2,7 @@ import { request, gql } from 'graphql-request'
 
 const graphqlAPI = process.env.NEXT_PUBLIC_GRAPHCMS_ENDPOINT
 
+// GET ALL POSTS
 export const getPosts = async () => {
   const query = gql`
     query MyQuery {
@@ -12,9 +13,6 @@ export const getPosts = async () => {
               bio
               name
               id
-              avatar {
-                url
-              }
             }
             createdAt
             slug
@@ -39,6 +37,7 @@ export const getPosts = async () => {
   return result.postsConnection.edges
 }
 
+// GET SINGLE POSTS
 export const getPostDetails = async slug => {
   const query = gql`
     query GetPostDetails($slug: String!) {
@@ -75,6 +74,7 @@ export const getPostDetails = async slug => {
   return result.post
 }
 
+// GET RECENT POSTS
 export const getRecentPosts = async () => {
   const query = gql`
     query GetPostDetails() {
@@ -97,6 +97,7 @@ export const getRecentPosts = async () => {
   return result.posts
 }
 
+// GET RELATED POSTS
 export const getRelatedPosts = async (categories, slug) => {
   const query = gql`
     query GetPostDetails($slug: String!, $categories: [String!]) {
@@ -122,6 +123,42 @@ export const getRelatedPosts = async (categories, slug) => {
   return result.posts
 }
 
+// GET CATEGORIES POSTS
+export const getCategoriesPosts = async slug => {
+  const query = gql`
+    query GetCategoriesPosts($slug: String!) {
+      postsConnection(where: { categories_some: { slug: $slug } }) {
+        edges {
+          cursor
+          node {
+            author {
+              bio
+              name
+              id
+            }
+            createdAt
+            slug
+            title
+            snippet
+            featuredImage {
+              url
+            }
+            categories {
+              name
+              slug
+            }
+          }
+        }
+      }
+    }
+  `
+
+  const result = await request(graphqlAPI, query, { slug })
+
+  return result.postsConnection.edges
+}
+
+// GET CATEGORIES
 export const getCategories = async () => {
   const query = gql`
     query GetCategories {
@@ -137,6 +174,7 @@ export const getCategories = async () => {
   return result.categories
 }
 
+// SUBMIT COMMENTS
 export const submitComment = async obj => {
   const result = await fetch('/api/comments', {
     method: 'POST',
@@ -149,6 +187,7 @@ export const submitComment = async obj => {
   return result.json()
 }
 
+// GET COMMENTS
 export const getComments = async slug => {
   const query = gql`
     query GetComments($slug: String!) {

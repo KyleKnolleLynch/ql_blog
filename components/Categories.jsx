@@ -30,6 +30,11 @@ const Categories = () => {
                 </Link>
               </li>
             ))}
+            <li className='mb-5 cursor-pointer'>
+              <Link href='/'>
+                  <p>View All</p>
+                </Link>
+            </li>
           </ul>
         </nav>
       )}
