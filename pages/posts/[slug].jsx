@@ -1,7 +1,18 @@
+import { useRouter } from 'next/router'
 import { getPosts, getPostDetails } from '../../services'
-import { Layout, PostDetails, Categories, Author, SidebarWidget, Comments, CommentsForm } from '../../components'
+import { Layout, PostDetails, Categories, Author, SidebarWidget, Comments, CommentsForm, Skeleton } from '../../components'
 
 const FullPost = ({ post }) => {
+    // const router = useRouter()  //TODO
+
+    // if (router.isFallback) {
+    //   return (
+    //     <Layout>
+    //       <Skeleton />
+    //     </Layout>
+    //   )
+    // }
+  
 
     return (
         <Layout>

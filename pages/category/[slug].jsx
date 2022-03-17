@@ -1,12 +1,16 @@
 import { useRouter } from 'next/router'
-import { Layout, PostCard, Categories } from '../../components'
+import { Layout, PostCard, Categories, Skeleton } from '../../components'
 import { getCategories, getCategoriesPosts } from '../../services'
 
 const PostsCategories = ({ posts }) => {
   const router = useRouter()
 
   if (router.isFallback) {
-    return <p>Loading...</p>
+    return (
+      <Layout>
+        <Skeleton />
+      </Layout>
+    )
   }
 
   return (
@@ -14,7 +18,7 @@ const PostsCategories = ({ posts }) => {
       <div className='postsCategories-container grid grid-cols-1 gap-12 lg:grid-cols-12'>
         <section className='col-span-1 lg:col-span-8'>
           {!posts ? (
-            <p>Loading...</p>
+            <Skeleton />
           ) : (
             posts.map(post => (
               <PostCard key={post.node.title} post={post.node} />
