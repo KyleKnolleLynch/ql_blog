@@ -49,10 +49,10 @@ const CommentsForm = ({ slug }) => {
   }
 
   return (
-    <article className='px-10 py-6 rounded'>
+    <article className='px-10 py-6 rounded mb-8'>
       <h2 className='text-xl font-semibold mb-8'>Leave a Comment</h2>
       <form className='grid grid-cols-1 lg:grid-cols-2 gap-2' onSubmit={handleSubmit}>
-        <div>
+        <div className='lg:col-span-2'>
           <textarea
             name='comment'
             ref={commentRef}
@@ -60,7 +60,7 @@ const CommentsForm = ({ slug }) => {
             placeholder='Comment'
           />
         </div>
-        <div>
+        <div className='lg:col-span-2 lg:flex lg:gap-2'>
           <input
             type='text'
             name='name'
