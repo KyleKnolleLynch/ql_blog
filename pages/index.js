@@ -7,6 +7,7 @@ import {
   Skeleton,
 } from '../components'
 import { getPosts } from '../services'
+import FeaturedPosts from '../carousel/FeaturedPosts'
 
 const Home = ({ posts }) => {
   return (
@@ -15,7 +16,7 @@ const Home = ({ posts }) => {
         <title>QL Blog</title>
         <link rel='icon' href='/favicon.ico' />
       </Head>
-
+      <FeaturedPosts />
       <div className='home-container grid grid-cols-1 gap-12 lg:grid-cols-12'>
         <section className='col-span-1 lg:col-span-8'>
           {!posts ? (

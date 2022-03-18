@@ -1,6 +1,6 @@
 import { Fragment } from 'react'
 import Image from 'next/image'
-import moment from 'moment'
+import { format } from 'date-fns'
 
 const PostDetails = ({ post: { title, featuredImage, author, createdAt, body } }) => {
 
@@ -66,7 +66,7 @@ const PostDetails = ({ post: { title, featuredImage, author, createdAt, body } }
         <p className='text-gray-400 pb-2 text-right'>
           <small>
             Article by <span className='author font-semibold'>{author.name}</span>
-            {' '}on <time dateTime={new Date(createdAt).toISOString()}>{moment(createdAt).format('MMM DD, YYYY')}</time>
+            {' '}on <time dateTime={new Date(createdAt).toISOString()}>{format(new Date(createdAt), 'MM/dd/yyyy')}</time>
           </small>
         </p>
         <h1 className='text-3xl md:text-4xl lg:text-5xl pb-8'>{title}</h1>

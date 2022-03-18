@@ -8,8 +8,8 @@ const Author = ({ author: { name, avatar, bio } }) => {
         <Image
           src={avatar.url}
           alt={name}
-          width='100px'
-          height='100px'
+          width={100}
+          height={100}
           objectFit='cover'
           unoptimized
           className='rounded-full'
