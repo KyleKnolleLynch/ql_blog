@@ -12,7 +12,6 @@ const Background = () => {
                     quality='100'
                     priority />
             </div>
-
         </div>
     )
 }

@@ -3,15 +3,15 @@ import { getPosts, getPostDetails } from '../../services'
 import { Layout, PostDetails, Categories, Author, SidebarWidget, Comments, CommentsForm, Skeleton } from '../../components'
 
 const FullPost = ({ post }) => {
-    // const router = useRouter()  //TODO
+    const router = useRouter()  
 
-    // if (router.isFallback) {
-    //   return (
-    //     <Layout>
-    //       <Skeleton />
-    //     </Layout>
-    //   )
-    // }
+    if (router.isFallback) {
+      return (
+        <Layout>
+          <Skeleton />
+        </Layout>
+      )
+    }
   
 
     return (
@@ -57,6 +57,6 @@ export async function getStaticPaths() {
 
     return {
         paths: posts.map(({ node: { slug } }) => ({ params: { slug } })),
-        fallback: false
+        fallback: true
     }
 }

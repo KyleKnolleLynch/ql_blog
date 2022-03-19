@@ -1,19 +1,32 @@
 import { format } from 'date-fns'
+import Image from 'next/image'
 import Link from 'next/link'
 
 const FeaturedPostCard = ({ post }) => {
     return (
         <article className='relative h-72'>
-            <div className="absolute rounded-lg bg-center bg-no-repeat bg-cover shadow-md inline-block w-full h-72" style={{ backgroundImage: `url('${post.featuredImage.url}')` }} />
-            <div className="absolute rounded-lg bg-center bg-gradient-to-b opacity-50 from-gray-400 via-gray-700 to-black w-full h-72" />
-            <div className="flex flex-col rounded-lg p-4 items-center justify-center absolute w-full h-full">
+            <Image
+                src={post.featuredImage.url}
+                alt={post.title}
+                layout='fill'
+                objectFit='cover'
+                className='rounded-lg isolate -z-10'
+            />
+            <div className="intro flex flex-col rounded-lg p-4 items-center justify-center relative h-full after:absolute after:inset-0  after:mix-blend-screen after:rounded-lg after:-z-10">
                 <p className="text-white mb-4 text-shadow font-semibold text-xs">
                     <time dateTime={new Date(post.createdAt).toISOString()}>{format(new Date(post.createdAt), 'MM/dd/yyyy')}</time>
                 </p>
                 <p className="text-white mb-4 text-shadow font-semibold text-2xl text-center">{post.title}</p>
 
             </div>
-            <Link href={`/posts/${post.slug}`}><span className="cursor-pointer absolute w-full h-full" /></Link>
+            <Link href={`/posts/${post.slug}`}>
+                <span className="cursor-pointer absolute w-full h-full" />
+            </Link>
+            <style jsx>{`
+                .intro::after {
+                    background: linear-gradient(to bottom right, #777, #333, #222);
+                }
+            `}</style>
         </article>
     )
 }
