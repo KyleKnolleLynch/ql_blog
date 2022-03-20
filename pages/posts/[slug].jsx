@@ -24,7 +24,7 @@ const FullPost = ({ post }) => {
                     <Comments slug={post.slug} />
                 </section>
                 <section className='col-span-1 lg:col-span-4'>
-                    <div className="relative lg:sticky top-0 grid gap-y-10">
+                    <div className="relative lg:sticky lg:top-10 grid gap-y-10">
                         <SidebarWidget
                             slug={post.slug}
                             categories={post.categories.map(cat => cat.slug)}

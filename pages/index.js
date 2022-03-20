@@ -28,7 +28,7 @@ const Home = ({ posts }) => {
           )}
         </section>
         <section className='col-span-1 lg:col-span-4'>
-          <div className='relative top-0 grid gap-y-10 lg:sticky'>
+          <div className='relative grid gap-y-10 lg:sticky lg:top-10'>
             <SidebarWidget />
             <Categories />
           </div>

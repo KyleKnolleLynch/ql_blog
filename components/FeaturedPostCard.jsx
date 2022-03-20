@@ -18,10 +18,10 @@ const FeaturedPostCard = ({ post }) => {
                 </p>
                 <p className="text-white mb-4 text-shadow font-semibold text-2xl text-center">{post.title}</p>
 
+                <Link href={`/posts/${post.slug}`}>
+                    <span className="cursor-pointer absolute w-full h-full" />
+                </Link>
             </div>
-            <Link href={`/posts/${post.slug}`}>
-                <span className="cursor-pointer absolute w-full h-full" />
-            </Link>
             <style jsx>{`
                 .intro::after {
                     background: linear-gradient(to bottom right, #777, #333, #222);
