@@ -7,13 +7,25 @@
 $clr-primary: hsl(123, 93%, 36%);
 $clr-secondary: hsla(123, 98%, 39%, 0.699);
 $clr-gray-100: hsl(220, 14%, 96%);
+$clr-gray-200: hsl(220, 13%, 91%);
+$clr-gray-700: hsl(217, 19%, 27%);
 $clr-gray-800: hsl(215, 28%, 17%);
 
 :root {
   --clr-primary: #{$clr-primary};
   --clr-secondary: #{$clr-secondary};
   --clr-gray-100: #{$clr-gray-100};
+  --clr-gray-200: #{$clr-gray-200};
+  --clr-gray-700: #{$clr-gray-700};
   --clr-gray-800: #{$clr-gray-800};
+}
+
+// DARK THEME ALT COLORS
+[data-theme='dark'] {
+  --clr-gray-100: #{$clr-gray-800};
+  --clr-gray-200: #{$clr-gray-700};
+  --clr-gray-700: #{$clr-gray-200};
+  --clr-gray-800: #{$clr-gray-100};
 }
 
 *,
@@ -29,7 +41,3 @@ html {
   padding: 0;
   font-family: 'Red Hat Display', sans-serif;
 }
-
-
-
-

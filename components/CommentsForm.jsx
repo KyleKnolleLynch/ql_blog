@@ -56,7 +56,7 @@ const CommentsForm = ({ slug }) => {
           <textarea
             name='comment'
             ref={commentRef}
-            className='w-full p-4 outline-none rounded-lg focus:ring-2 focus:ring-gray-300 bg-gray-200 text-gray-700'
+            className='w-full p-4 outline-none rounded-lg focus:ring-2 focus:ring-gray-300'
             placeholder='Comment'
           />
         </div>
@@ -65,7 +65,7 @@ const CommentsForm = ({ slug }) => {
             type='text'
             name='name'
             ref={nameRef}
-            className='w-full py-2 px-4 mb-4 outline-none rounded-lg focus:ring-2 focus:ring-gray-300 bg-gray-200 text-gray-700'
+            className='w-full py-2 px-4 mb-4 outline-none rounded-lg focus:ring-2 focus:ring-gray-300'
             placeholder='Name'
           />
           <label htmlFor="name" className='sr-only'>Name</label>
@@ -73,7 +73,7 @@ const CommentsForm = ({ slug }) => {
             type='email'
             name='email'
             ref={emailRef}
-            className='w-full py-2 px-4 mb-4 outline-none rounded-lg focus:ring-2 focus:ring-gray-300 bg-gray-200 text-gray-700'
+            className='w-full py-2 px-4 mb-4 outline-none rounded-lg focus:ring-2 focus:ring-gray-300'
             placeholder='Email'
           />
           <label htmlFor="email" className='sr-only'>Email</label>
@@ -97,6 +97,12 @@ const CommentsForm = ({ slug }) => {
       <style jsx>{`
           article {
             background-color: var(--clr-gray-100);
+          }
+          form input[type='text'],
+          form input[type='email'],
+          form textarea {
+            background-color: var(--clr-gray-200);
+            color: var(--clr-gray-700);
           }
           form button {
             background-color: var(--clr-primary);
