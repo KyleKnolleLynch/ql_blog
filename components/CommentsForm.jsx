@@ -3,7 +3,6 @@ import { submitComment } from '../services'
 
 const CommentsForm = ({ slug }) => {
   const [error, setError] = useState(false)
-  const [localStorage, setLocalStorage] = useState(null)
   const [showSuccessMsg, setShowSuccessMsg] = useState(false)
   const commentRef = useRef()
   const nameRef = useRef()

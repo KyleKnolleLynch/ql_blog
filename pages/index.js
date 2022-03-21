@@ -6,12 +6,12 @@ import {
   Categories,
   Skeleton,
 } from '../components'
-import { getPosts } from '../services'
+import { getPosts, getBackgroundImage } from '../services'
 import FeaturedPosts from '../carousel/FeaturedPosts'
 
-const Home = ({ posts }) => {
+const Home = ({ posts, backgroundImage }) => {
   return (
-    <Layout>
+    <Layout bgImg={backgroundImage[0].node.bgImg}>
       <Head>
         <title>QL Blog</title>
         <link rel='icon' href='/favicon.ico' />
@@ -44,10 +44,11 @@ const Home = ({ posts }) => {
 }
 
 export async function getStaticProps() {
+  const backgroundImage = await getBackgroundImage()
   const posts = (await getPosts()) || []
 
   return {
-    props: { posts },
+    props: { backgroundImage, posts },
   }
 }
 

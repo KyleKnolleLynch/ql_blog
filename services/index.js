@@ -2,6 +2,29 @@ import { request, gql } from 'graphql-request'
 
 const graphqlAPI = process.env.NEXT_PUBLIC_GRAPHCMS_ENDPOINT
 
+// GET BACKGROUND IMAGE
+export const getBackgroundImage = async () => {
+  const query = gql`
+  query GetBackgroundImage {
+    backgroundsConnection {
+      edges {
+        node {
+          bgImg {
+            url
+            width
+            height
+          }
+        }
+      }
+    }
+  }
+  `
+
+  const result = await request(graphqlAPI, query)
+
+  return result.backgroundsConnection.edges
+}
+
 // GET ALL POSTS
 export const getPosts = async () => {
   const query = gql`
