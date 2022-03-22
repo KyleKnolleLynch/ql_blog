@@ -1,5 +1,5 @@
-import Header from './Header'
 import Background from './Background'
+import Header from './Header'
 import Footer from './Footer'
 
 const Layout = ({ children, bgImg }) => {

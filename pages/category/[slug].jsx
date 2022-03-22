@@ -1,8 +1,8 @@
 import { useRouter } from 'next/router'
 import { Layout, PostCard, Categories, Skeleton } from '../../components'
-import { getCategories, getCategoriesPosts } from '../../services'
+import { getBackgroundImage, getCategories, getCategoriesPosts } from '../../services'
 
-const PostsCategories = ({ posts }) => {
+const PostsCategories = ({ posts, backgroundImage }) => {
   const router = useRouter()
 
   if (router.isFallback) {
@@ -14,7 +14,7 @@ const PostsCategories = ({ posts }) => {
   }
 
   return (
-    <Layout>
+    <Layout bgImg={backgroundImage[0].node.bgImg}>
       <div className='postsCategories-container grid grid-cols-1 gap-12 lg:grid-cols-12'>
         <section className='col-span-1 lg:col-span-8'>
           {!posts ? (
@@ -43,10 +43,11 @@ const PostsCategories = ({ posts }) => {
 export default PostsCategories
 
 export async function getStaticProps({ params }) {
+  const backgroundImage = await getBackgroundImage()
   const posts = await getCategoriesPosts(params.slug)
 
   return {
-    props: { posts },
+    props: { posts, backgroundImage },
   }
 }
 

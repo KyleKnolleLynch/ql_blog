@@ -38,7 +38,7 @@ const Home = ({ posts, backgroundImage }) => {
             <button
               type='button'
               onClick={showMorePosts}
-              className='showMoreBtn w-full rounded-lg py-2 mb-6 font-semibold text-gray-100 lg:py-3 lg:text-lg'
+              className='showMoreBtn mb-6 w-full rounded-lg py-2 font-semibold text-gray-100 lg:py-3 lg:text-lg'
             >
               Show More
             </button>

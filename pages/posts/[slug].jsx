@@ -1,8 +1,8 @@
 import { useRouter } from 'next/router'
-import { getPosts, getPostDetails } from '../../services'
+import { getPosts, getPostDetails, getBackgroundImage } from '../../services'
 import { Layout, PostDetails, Categories, Author, SidebarWidget, Comments, CommentsForm, Skeleton } from '../../components'
 
-const FullPost = ({ post }) => {
+const FullPost = ({ post, backgroundImage }) => {
     const router = useRouter()  
 
     if (router.isFallback) {
@@ -15,7 +15,7 @@ const FullPost = ({ post }) => {
   
 
     return (
-        <Layout>
+        <Layout bgImg={backgroundImage[0].node.bgImg}>
             <div className="posts-container grid grid-cols-1 gap-12 lg:grid-cols-12">
                 <section className='col-span-1 lg:col-span-8'>
                     <PostDetails post={post} />
@@ -45,10 +45,11 @@ const FullPost = ({ post }) => {
 export default FullPost
 
 export async function getStaticProps({ params }) {
+    const backgroundImage = await getBackgroundImage()
     const post = (await getPostDetails(params.slug)) || []
 
     return {
-        props: { post }
+        props: { post, backgroundImage }
     }
 }
 
