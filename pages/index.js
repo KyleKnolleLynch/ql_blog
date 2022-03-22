@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import { useState } from 'react'
 import {
   Layout,
   PostCard,
@@ -10,6 +11,13 @@ import { getPosts, getBackgroundImage } from '../services'
 import FeaturedPosts from '../carousel/FeaturedPosts'
 
 const Home = ({ posts, backgroundImage }) => {
+  const [visible, setVisible] = useState(4)
+  const [displayedPosts, setDisplayedPosts] = useState(posts)
+
+  const showMorePosts = () => {
+    visible < posts.length && setVisible(prev => prev + 4)
+  }
+
   return (
     <Layout bgImg={backgroundImage[0].node.bgImg}>
       <Head>
@@ -19,12 +27,21 @@ const Home = ({ posts, backgroundImage }) => {
       <FeaturedPosts />
       <div className='home-container grid grid-cols-1 gap-12 lg:grid-cols-12'>
         <section className='col-span-1 lg:col-span-8'>
-          {!posts ? (
+          {!displayedPosts ? (
             <Skeleton />
           ) : (
-            posts.map(post => (
-              <PostCard key={post.node.title} post={post.node} />
-            ))
+            displayedPosts
+              .slice(0, visible)
+              .map(post => <PostCard key={post.node.title} post={post.node} />)
+          )}
+          {visible < displayedPosts.length && (
+            <button
+              type='button'
+              onClick={showMorePosts}
+              className='showMoreBtn w-full rounded-lg py-2 mb-6 font-semibold text-gray-100 lg:py-3 lg:text-lg'
+            >
+              Show More
+            </button>
           )}
         </section>
         <section className='col-span-1 lg:col-span-4'>
@@ -37,6 +54,9 @@ const Home = ({ posts, backgroundImage }) => {
       <style jsx>{`
         .home-container {
           color: var(--clr-gray-800);
+        }
+        .showMoreBtn {
+          background-color: var(--clr-primary);
         }
       `}</style>
     </Layout>
