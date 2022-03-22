@@ -23,7 +23,7 @@ const Comments = ({ slug }) => {
                   <time dateTime={new Date(comment.createdAt).toISOString()}>{format(new Date(comment.createdAt), 'MM/dd/yyyy')}</time>
                 </small>
               </p>
-              <p className='whitespace-pre-line text-gray-500 w-full'>{comment.comment}</p>
+              <p className='whitespace-pre-line text-gray-500 w-full'>{parse(comment.comment)}</p>
             </div>
           ))}
         </article>

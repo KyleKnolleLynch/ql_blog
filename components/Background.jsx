@@ -4,7 +4,7 @@ const Background = ({ bgImg }) => {
     // IMAGE WIDTH AND HEIGHT ALSO AVAILABLE IN THE bgImg PROPS OBJECT
     return (
         <div className='min-h-screen isolate fixed'>
-            <div className='relative min-h-screen w-screen'>
+            <div className='relative min-h-screen w-screen overflow-hidden'>
                 {bgImg ? (
                     <Image
                         src={bgImg.url}
