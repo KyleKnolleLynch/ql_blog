@@ -1,21 +1,25 @@
 import { useRouter } from 'next/router'
 import { getPosts, getPostDetails, getBackgroundImage } from '../../services'
-import { Layout, PostDetails, Categories, Author, SidebarWidget, Comments, CommentsForm, Skeleton } from '../../components'
+import { Meta, Layout, PostDetails, Categories, Author, SidebarWidget, Comments, CommentsForm, Skeleton } from '../../components'
 
 const FullPost = ({ post, backgroundImage }) => {
-    const router = useRouter()  
+    const router = useRouter()
 
     if (router.isFallback) {
-      return (
-        <Layout>
-          <Skeleton />
-        </Layout>
-      )
+        return (
+            <Layout>
+                <Skeleton />
+            </Layout>
+        )
     }
-  
 
     return (
         <Layout bgImg={backgroundImage[0].node.bgImg}>
+            <Meta
+                title={post.title}
+                desc={post.snippet}
+                keywords={post.categories.map(cat => cat.name).toString()}
+            />
             <div className="posts-container grid grid-cols-1 gap-12 lg:grid-cols-12">
                 <section className='col-span-1 lg:col-span-8'>
                     <PostDetails post={post} />

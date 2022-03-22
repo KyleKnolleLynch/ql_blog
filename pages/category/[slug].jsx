@@ -1,9 +1,10 @@
 import { useRouter } from 'next/router'
-import { Layout, PostCard, Categories, Skeleton } from '../../components'
+import { Meta, Layout, PostCard, Categories, Skeleton } from '../../components'
 import { getBackgroundImage, getCategories, getCategoriesPosts } from '../../services'
 
 const PostsCategories = ({ posts, backgroundImage }) => {
   const router = useRouter()
+  const { slug } = router.query
 
   if (router.isFallback) {
     return (
@@ -15,6 +16,11 @@ const PostsCategories = ({ posts, backgroundImage }) => {
 
   return (
     <Layout bgImg={backgroundImage[0].node.bgImg}>
+      <Meta
+        title={`QL Blog | ${slug}`}
+        desc={`Blog website categories page which displays all related posts related to ${slug}`}
+        keywords={slug}
+      />
       <div className='postsCategories-container grid grid-cols-1 gap-12 lg:grid-cols-12'>
         <section className='col-span-1 lg:col-span-8'>
           {!posts ? (

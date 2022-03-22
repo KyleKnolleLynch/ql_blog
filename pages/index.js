@@ -1,16 +1,16 @@
-import Head from 'next/head'
 import { useState } from 'react'
 import {
+  Meta,
   Layout,
   PostCard,
   SidebarWidget,
   Categories,
   Skeleton,
 } from '../components'
-import { getPosts, getBackgroundImage } from '../services'
+import { getPosts, getBackgroundImage, getCategories } from '../services'
 import FeaturedPosts from '../carousel/FeaturedPosts'
 
-const Home = ({ posts, backgroundImage }) => {
+const Home = ({ posts, backgroundImage, categories }) => {
   const [visible, setVisible] = useState(4)
   const [displayedPosts, setDisplayedPosts] = useState(posts)
 
@@ -18,12 +18,16 @@ const Home = ({ posts, backgroundImage }) => {
     visible < posts.length && setVisible(prev => prev + 4)
   }
 
+  // GET KEYWORDS FROM ALL BLOG CATEGORIES FOR META KEYWORDS
+  const keywords = categories.map(cat => cat.name).toString()
+  
   return (
     <Layout bgImg={backgroundImage[0].node.bgImg}>
-      <Head>
-        <title>QL Blog</title>
-        <link rel='icon' href='/favicon.ico' />
-      </Head>
+      <Meta
+        title='QL Blog | Home'
+        desc='Blog website about technology, web development, and other personal interests'
+        keywords={`blog, tech, web development, programming, ${keywords}`}
+      />
       <FeaturedPosts />
       <div className='home-container grid grid-cols-1 gap-12 lg:grid-cols-12'>
         <section className='col-span-1 lg:col-span-8'>
@@ -66,9 +70,10 @@ const Home = ({ posts, backgroundImage }) => {
 export async function getStaticProps() {
   const backgroundImage = await getBackgroundImage()
   const posts = (await getPosts()) || []
+  const categories = await getCategories()
 
   return {
-    props: { backgroundImage, posts },
+    props: { backgroundImage, posts, categories },
   }
 }
 
